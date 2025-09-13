@@ -25,22 +25,37 @@ function App() {
   return (
     <>
       <div>
-        {tubeStatus?.map((line: Line) => (
-          <div key={line.id}>
-            <p>{line.name}</p>
-            {line.lineStatuses.map((status: LineStatus) => (
-              <div>
-                {status.disruption && (
-                  <div>
-                    <p>{status.statusSeverityDescription}</p>
-                    <p>{status.reason}</p>
-                  </div>
-                )}
-                <hr />
+        {tubeStatus?.map((line: Line) => {
+          const hasNoDisruptions = line.lineStatuses.every(
+            (status) => !status.disruption
+          );
+          return (
+            <div key={line.id} className='line'>
+              <div className={`line-name ${line.id.toLowerCase()}`}>
+                {line.name}
               </div>
-            ))}
-          </div>
-        ))}
+              <div className='line-statuses'>
+                {hasNoDisruptions ? (
+                  <div>Good service</div>
+                ) : (
+                  line.lineStatuses.map((status: LineStatus) => (
+                    <div>
+                      {status.disruption && (
+                        <div>
+                          <span>
+                            <b>{status.statusSeverityDescription}</b>
+                          </span>
+                          <br />
+                          <span>{status.reason}</span>
+                        </div>
+                      )}
+                    </div>
+                  ))
+                )}
+              </div>
+            </div>
+          );
+        })}
       </div>
     </>
   );
