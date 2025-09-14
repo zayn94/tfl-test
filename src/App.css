@@ -1,0 +1,11 @@
+.lines-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 5px;
+}
+
+@media (min-width: 768px) {
+  .lines-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import Chevron from './Chevron';
 import type { Line } from '../types/tfl';
+import './LineSummary.css';
 
 interface LineItemProps {
   line: Line;

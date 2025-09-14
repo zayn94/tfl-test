@@ -17,7 +17,6 @@ export interface Disruption {
 
 export interface LineStatus {
   $type: string;
-  id: number;
   lineId: string;
   statusSeverity: number;
   statusSeverityDescription: string;

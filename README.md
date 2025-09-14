@@ -56,6 +56,12 @@ Open [http://localhost:5173](http://localhost:5173) in your browser.
 
 ---
 
+## Running Unit Tests (Vitest)
+
+```bash
+npm run tests
+```
+
 ## Build for production
 
 ```bash
