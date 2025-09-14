@@ -6,7 +6,7 @@ import LineSummary from './components/LineSummary';
 
 function App() {
   const [tubeStatus, setTubeStatus] = useState<TflStatusResponse>([]);
-
+  const [openLines, setOpenLines] = useState<String[]>([]);
   const lineStyles: Record<string, string> = {
     bakerloo: '#894e24',
     central: '#dc241f',
@@ -39,7 +39,18 @@ function App() {
   return (
     <div className='lines-container'>
       {tubeStatus?.map((line: Line) => (
-        <LineSummary key={line.id} line={line} lineStyles={lineStyles} />
+        <LineSummary
+          line={line}
+          lineStyles={lineStyles}
+          isOpen={openLines.includes(line.id)}
+          onClick={() => {
+            setOpenLines((prevOpenLines) =>
+              prevOpenLines.includes(line.id)
+                ? prevOpenLines.filter((id) => id !== line.id)
+                : [...prevOpenLines, line.id]
+            );
+          }}
+        />
       ))}
     </div>
   );

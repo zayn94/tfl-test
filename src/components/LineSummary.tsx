@@ -5,18 +5,27 @@ import type { Line } from '../types/tfl';
 interface LineItemProps {
   line: Line;
   lineStyles: Record<string, string>;
+  isOpen: Boolean;
+  onClick: () => void;
 }
 
-const LineSummary: React.FC<LineItemProps> = ({ line, lineStyles }) => {
+const LineSummary: React.FC<LineItemProps> = ({
+  line,
+  lineStyles,
+  isOpen,
+  onClick,
+}) => {
   const hasNoDisruptions = line.lineStatuses.every(
     (status) => !status.disruption
   );
-
   return (
     <div
-      key={line.id}
       className='line'
       style={{ cursor: hasNoDisruptions ? 'default' : 'pointer' }}
+      onClick={() => {
+        if (hasNoDisruptions) return;
+        onClick();
+      }}
     >
       <div
         className='line-colour'
@@ -31,10 +40,9 @@ const LineSummary: React.FC<LineItemProps> = ({ line, lineStyles }) => {
             <div key={index}>
               {status.disruption && (
                 <div>
-                  <span>
-                    <b>{status.statusSeverityDescription}</b>
-                  </span>
+                  <b>{status.statusSeverityDescription}</b>
                   <br />
+                  {isOpen && <span>{status.reason}</span>}
                 </div>
               )}
             </div>
@@ -43,7 +51,7 @@ const LineSummary: React.FC<LineItemProps> = ({ line, lineStyles }) => {
       </div>
       {!hasNoDisruptions && (
         <div className='button-container'>
-          <Chevron />
+          <Chevron direction={isOpen ? 'down' : 'right'} />
         </div>
       )}
     </div>
