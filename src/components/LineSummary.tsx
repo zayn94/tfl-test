@@ -31,7 +31,12 @@ const LineSummary: React.FC<LineItemProps> = ({
         className='line-colour'
         style={{ backgroundColor: lineStyles[line.id.toLowerCase()] }}
       ></div>
-      <div className='line-name'>{line.name}</div>
+      <div
+        className='line-name'
+        style={{ justifyContent: isOpen ? 'flex-start' : 'center' }}
+      >
+        {line.name}
+      </div>
       <div className='line-statuses'>
         {hasNoDisruptions ? (
           <div>Good service</div>

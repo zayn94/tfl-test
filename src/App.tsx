@@ -25,7 +25,7 @@ function App() {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          'http://api.tfl.gov.uk/Line/Mode/Tube/Status'
+          'http://api.tfl.gov.uk/Line/Mode/Tube/Status?app_key=3c0da505585f48d7b21bbbe5da1c1a5b'
         );
         const result = await response.json();
         setTubeStatus(result);
@@ -40,6 +40,7 @@ function App() {
     <div className='lines-container'>
       {tubeStatus?.map((line: Line) => (
         <LineSummary
+          key={line.id}
           line={line}
           lineStyles={lineStyles}
           isOpen={openLines.includes(line.id)}
