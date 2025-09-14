@@ -7,6 +7,8 @@ import LineSummary from './components/LineSummary';
 function App() {
   const [tubeStatus, setTubeStatus] = useState<TflStatusResponse>([]);
   const [openLines, setOpenLines] = useState<String[]>([]);
+  const apiKey = import.meta.env.VITE_TFL_API_KEY;
+
   const lineStyles: Record<string, string> = {
     bakerloo: '#894e24',
     central: '#dc241f',
@@ -24,9 +26,8 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          'http://api.tfl.gov.uk/Line/Mode/Tube/Status?app_key=3c0da505585f48d7b21bbbe5da1c1a5b'
-        );
+        const url = `http://api.tfl.gov.uk/Line/Mode/Tube/Status?app_key=${apiKey}`;
+        const response = await fetch(url);
         const result = await response.json();
         setTubeStatus(result);
       } catch (error) {
