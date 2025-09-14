@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import type { Line, LineStatus, TflStatusResponse } from './types/tfl';
+import type { Line, TflStatusResponse } from './types/tfl';
 
 import './App.css';
-import Chevron from './components/Chevron';
+import LineSummary from './components/LineSummary';
 
 function App() {
   const [tubeStatus, setTubeStatus] = useState<TflStatusResponse>([]);
@@ -28,7 +28,6 @@ function App() {
           'http://api.tfl.gov.uk/Line/Mode/Tube/Status'
         );
         const result = await response.json();
-        console.log(result);
         setTubeStatus(result);
       } catch (error) {
         console.error('error fetching status..', error);
@@ -38,51 +37,11 @@ function App() {
   }, []);
 
   return (
-    <>
-      <div className='lines-container'>
-        {tubeStatus?.map((line: Line) => {
-          const hasNoDisruptions = line.lineStatuses.every(
-            (status) => !status.disruption
-          );
-          return (
-            <div
-              key={line.id}
-              className='line'
-              style={{ cursor: hasNoDisruptions ? 'default' : 'pointer' }}
-            >
-              <div
-                className='line-colour'
-                style={{ backgroundColor: lineStyles[line.id.toLowerCase()] }}
-              ></div>
-              <div className='line-name'>{line.name}</div>
-              <div className='line-statuses'>
-                {hasNoDisruptions ? (
-                  <div>Good service</div>
-                ) : (
-                  line.lineStatuses.map((status: LineStatus) => (
-                    <div>
-                      {status.disruption && (
-                        <div>
-                          <span>
-                            <b>{status.statusSeverityDescription}</b>
-                          </span>
-                          <br />
-                        </div>
-                      )}
-                    </div>
-                  ))
-                )}
-              </div>
-              {!hasNoDisruptions && (
-                <div className='button-container'>
-                  <Chevron />
-                </div>
-              )}
-            </div>
-          );
-        })}
-      </div>
-    </>
+    <div className='lines-container'>
+      {tubeStatus?.map((line: Line) => (
+        <LineSummary key={line.id} line={line} lineStyles={lineStyles} />
+      ))}
+    </div>
   );
 }
 
