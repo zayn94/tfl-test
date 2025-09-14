@@ -23,6 +23,7 @@ const Chevron: React.FC<{ direction?: 'left' | 'right' | 'up' | 'down' }> = ({
       strokeLinecap='round'
       strokeLinejoin='round'
       style={{ transform: `rotate(${rotations[direction]}deg)` }}
+      data-direction={direction}
     >
       <polyline points='9 18 15 12 9 6' />
     </svg>

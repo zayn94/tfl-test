@@ -62,6 +62,20 @@ Open [http://localhost:5173](http://localhost:5173) in your browser.
 npm run tests
 ```
 
+## Running e2e Tests (Cypress)
+
+To run tests only
+
+```bash
+npm run cypress:run
+```
+
+To run using cypress UI
+
+```bash
+npm run cypress:open
+```
+
 ## Build for production
 
 ```bash

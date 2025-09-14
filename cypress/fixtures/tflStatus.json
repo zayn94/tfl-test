@@ -1,0 +1,108 @@
+[
+  {
+    "$type": "Tfl.Api.Presentation.Entities.Line, Tfl.Api.Presentation.Entities",
+    "id": "central",
+    "name": "Central",
+    "modeName": "tube",
+    "lineStatuses": [
+      {
+        "$type": "Tfl.Api.Presentation.Entities.LineStatus, Tfl.Api.Presentation.Entities",
+        "lineId": "central",
+        "statusSeverity": 10,
+        "statusSeverityDescription": "Good Service",
+        "reason": "",
+        "validityPeriods": []
+      }
+    ]
+  },
+  {
+    "$type": "Tfl.Api.Presentation.Entities.Line, Tfl.Api.Presentation.Entities",
+    "id": "jubilee",
+    "name": "Jubilee",
+    "modeName": "tube",
+    "lineStatuses": [
+      {
+        "$type": "Tfl.Api.Presentation.Entities.LineStatus, Tfl.Api.Presentation.Entities",
+        "lineId": "jubilee",
+        "statusSeverity": 2,
+        "statusSeverityDescription": "Suspended",
+        "reason": "Signal failure at West Hampstead.",
+        "validityPeriods": []
+      }
+    ]
+  },
+  {
+    "$type": "Tfl.Api.Presentation.Entities.Line, Tfl.Api.Presentation.Entities",
+    "id": "metropolitan",
+    "name": "Metropolitan",
+    "modeName": "tube",
+    "disruptions": [],
+    "created": "2025-09-11T15:21:16.657Z",
+    "modified": "2025-09-11T15:21:16.657Z",
+    "lineStatuses": [
+      {
+        "$type": "Tfl.Api.Presentation.Entities.LineStatus, Tfl.Api.Presentation.Entities",
+        "id": 0,
+        "lineId": "metropolitan",
+        "statusSeverity": 6,
+        "statusSeverityDescription": "Severe Delays",
+        "reason": "Metropolitan Line: No service between Wembley Park and Aldgate while we fix a track fault in the Willesden Green Area. SEVERE DELAYS on the rest of the line. Valid tickets are being accepted on the London buses, Chiltern, Lioness Line and Thameslink service between Farringdon and West Hampstead. ",
+        "created": "0001-01-01T00:00:00",
+        "validityPeriods": [
+          {
+            "$type": "Tfl.Api.Presentation.Entities.ValidityPeriod, Tfl.Api.Presentation.Entities",
+            "fromDate": "2025-09-14T15:12:26Z",
+            "toDate": "2025-09-15T00:29:00Z",
+            "isNow": true
+          }
+        ],
+        "disruption": {
+          "$type": "Tfl.Api.Presentation.Entities.Disruption, Tfl.Api.Presentation.Entities",
+          "category": "RealTime",
+          "categoryDescription": "RealTime",
+          "description": "Metropolitan Line: No service between Wembley Park and Aldgate while we fix a track fault in the Willesden Green Area. SEVERE DELAYS on the rest of the line. Valid tickets are being accepted on the London buses, Chiltern, Lioness Line and Thameslink service between Farringdon and West Hampstead. ",
+          "affectedRoutes": [],
+          "affectedStops": [],
+          "closureText": "severeDelays"
+        }
+      },
+      {
+        "$type": "Tfl.Api.Presentation.Entities.LineStatus, Tfl.Api.Presentation.Entities",
+        "id": 0,
+        "lineId": "metropolitan",
+        "statusSeverity": 3,
+        "statusSeverityDescription": "Part Suspended",
+        "reason": "Metropolitan Line: No service between Wembley Park and Aldgate",
+        "created": "0001-01-01T00:00:00",
+        "validityPeriods": [
+          {
+            "$type": "Tfl.Api.Presentation.Entities.ValidityPeriod, Tfl.Api.Presentation.Entities",
+            "fromDate": "2025-09-14T15:12:26Z",
+            "toDate": "2025-09-14T19:25:30Z",
+            "isNow": true
+          }
+        ],
+        "disruption": {
+          "$type": "Tfl.Api.Presentation.Entities.Disruption, Tfl.Api.Presentation.Entities",
+          "category": "RealTime",
+          "categoryDescription": "RealTime",
+          "description": "Metropolitan Line: No service between Wembley Park and Aldgate while we fix a track fault in the Willesden Green Area. SEVERE DELAYS on the rest of the line. Valid tickets are being accepted on the London buses, Chiltern, Lioness Line and Thameslink service between Farringdon and West Hampstead. ",
+          "affectedRoutes": [],
+          "affectedStops": [],
+          "closureText": "partSuspended"
+        }
+      }
+    ],
+    "routeSections": [],
+    "serviceTypes": [
+      {
+        "$type": "Tfl.Api.Presentation.Entities.LineServiceTypeInfo, Tfl.Api.Presentation.Entities",
+        "name": "Regular",
+        "uri": "/Line/Route?ids=Metropolitan&serviceTypes=Regular"
+      }
+    ],
+    "crowding": {
+      "$type": "Tfl.Api.Presentation.Entities.Crowding, Tfl.Api.Presentation.Entities"
+    }
+  }
+]
